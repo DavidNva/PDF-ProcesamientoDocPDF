@@ -1,4 +1,4 @@
-# API para Procesamiento de Documentos con Python, Flask y AI
+# API para Procesamiento de Documentos con Flask, AI y ML
 
 ## Descripción
 Esta API permite el procesamiento y análisis de documentos PDF utilizando inteligencia artificial y aprendizaje automático. Implementa un sistema de preguntas y respuestas (QA) que puede extraer información relevante de documentos almacenados, utilizando modelos de NLP y bases de datos vectoriales para una búsqueda eficiente.
@@ -25,39 +25,20 @@ Esta API permite el procesamiento y análisis de documentos PDF utilizando intel
 - **Infraestructura en la Nube**: Google Cloud Run (opcional para despliegue)
 
 ### Dependencias
-Para ejecutar este proyecto, instala las dependencias necesarias:
+Se recomienda crear un entorno virtual antes de instalar las dependencias para evitar conflictos con otros paquetes del sistema:
+```sh
+python -m venv venv
+source venv/bin/activate  # En Windows usa: venv\Scripts\activate
+```
+Luego, instala las dependencias necesarias:
 ```sh
 pip install flask flask-session openai faiss-cpu langchain tiktoken huggingface_hub
 ```
 
 ---
 
-## Estructura del Proyecto
-```
-/
-|-- app/
-|   |-- routes.py           # Rutas de la API (Status, Consulta)
-|   |-- session_manager.py  # Gestión de sesiones Flask
-|-- services/
-|   |-- qa_system.py        # Sistema de preguntas y respuestas
-|   |-- document_processor.py # Procesador de documentos
-|   |-- conversation_manager.py # Manejo de conversaciones
-|-- storage/
-|   |-- metadata_storage.py  # Almacenamiento de metadatos
-|   |-- document_storage.py  # Almacenamiento de documentos
-|   |-- vector_database.py   # Base de datos FAISS
-|-- nlp/
-|   |-- embedding_service.py # Generación de embeddings con Hugging Face
-|   |-- language_model.py    # Modelo de lenguaje OpenAI GPT
-|   |-- token_counter.py     # Contador de tokens con TikToken
-|-- config.py               # Configuraciones generales
-|-- main.py                 # Punto de entrada de la aplicación
-|-- requirements.txt        # Lista de dependencias
-|-- README.md               # Documentación del proyecto
-```
 ## Arquitectura del Proyecto
-![ChatPDF_API_ProcesamientoDocumentos](https://github.com/user-attachments/assets/6ef3dfe6-1232-48ee-883f-a26097f4b432)
-
+![ChatPDF_API_ProcesamientoDocumentos](https://github.com/user-attachments/assets/c7323cd7-f635-4388-8990-e3c387216480)
 ---
 
 ## Configuración
@@ -66,7 +47,6 @@ Crea un archivo `.env` en la raíz del proyecto y configura las siguientes varia
 ```env
 OPENAI_API_KEY=tu_clave_de_openai
 HUGGINGFACE_API_KEY=tu_clave_de_huggingface
-FLASK_SECRET_KEY=clave_secreta_para_sesiones
 ```
 
 ---
@@ -76,7 +56,7 @@ FLASK_SECRET_KEY=clave_secreta_para_sesiones
 ```sh
 python main.py
 ```
-Esto iniciará la API en `tu url`
+Esto iniciará la API en `tu ruta del proyecto`
 
 ### 2. Endpoints Disponibles
 #### 2.1. Verificar el estado de la API
@@ -91,20 +71,8 @@ GET /status
 ```
 
 #### 2.2. Subir y Procesar un Documento PDF
-```http
-POST /upload
-Content-Type: multipart/form-data
 ```
-**Body:**
-```form-data
-file: [archivo.pdf]
-```
-**Respuesta esperada:**
-```json
-{
-  "message": "Documento procesado exitosamente",
-  "document_id": "123456"
-}
+Deberas dejar un documento txt  (partiras de la conversion de un PDF a texto) convertido a chunks para poder procesarlos. 
 ```
 
 #### 2.3. Realizar una Consulta sobre un Documento
@@ -129,7 +97,7 @@ Content-Type: application/json
 ---
 
 ## Despliegue en Google Cloud Run
-Para desplegar la API en la nube:
+Para desplegar la API en la nube, se recomienda utilizar Docker.
 
 ### 1. Autenticarse en Google Cloud
 ```sh
@@ -175,3 +143,4 @@ Si deseas contribuir, por favor sigue estos pasos:
 
 ## Licencia
 Este proyecto está bajo la licencia MIT.
+
