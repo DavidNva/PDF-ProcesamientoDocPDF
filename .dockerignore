@@ -1,0 +1,20 @@
+# Archivos del entorno virtual
+env/
+
+# Archivos de Python compilados y caché
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Caché de pruebas
+.pytest_cache/
+
+# Archivos específicos del proyecto
+Dockerfile
+README.md
+
+# Ignorar configuraciones de Git y editor
+.git/
+*.swp
+*.vscode/
