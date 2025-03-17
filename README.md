@@ -56,7 +56,7 @@ pip install flask flask-session openai faiss-cpu langchain tiktoken huggingface_
 |-- README.md               # Documentación del proyecto
 ```
 ## Arquitectura del Proyecto
-![ChatPDF_API_ProcesamientoDocumentos](https://github.com/user-attachments/assets/25ce1fa7-aa1b-4782-bc3e-a3097389e401)
+![ChatPDF_API_ProcesamientoDocumentos](https://github.com/user-attachments/assets/6ef3dfe6-1232-48ee-883f-a26097f4b432)
 
 ---
 
